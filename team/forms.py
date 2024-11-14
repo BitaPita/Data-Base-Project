@@ -10,3 +10,12 @@ class teamform(forms.ModelForm):
         widgets = {  
             'password': forms.PasswordInput(),  # Use a password input for security  
         }  
+
+
+
+class drillform(forms.ModelForm):
+    class Meta:
+        model = teams
+        fields = ['title', 'desc', 'pic', 'video']
+
+    

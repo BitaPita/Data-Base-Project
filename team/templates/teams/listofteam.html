@@ -14,9 +14,9 @@
         <ul>  
             {% for team in teams_list %}  
                 <li>  
-                    <h2>{{ team.name }}</h2>  <!-- Assuming 'name' is the attribute for the team's name -->  
-                    <p>Details: {{ team.details }}</p>  <!-- Replace 'details' with the actual attribute -->  
-                    <p>Established Year: {{ team.established_year }}</p>  <!-- Example attribute -->  
+                    <h2>{{ team.title }}</h2>  <!-- Assuming 'name' is the attribute for the team's name -->  
+                    <p>Details: {{ team.desc }}</p>  <!-- Replace 'details' with the actual attribute -->  
+                    <p>password: {{ team.pass }}</p>  <!-- Example attribute -->  
                     {% if team.logo %}  
                         <img src="{{ team.logo.url }}" alt="{{ team.name }}" style="width: 200px;">  
                     {% endif %}  

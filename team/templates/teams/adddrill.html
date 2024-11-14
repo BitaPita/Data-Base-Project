@@ -1,0 +1,68 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Upload Form</title>  
+      
+</head>  
+<body>  
+    <h1>Upload Team Data</h1>  
+    <form method="POST" enctype="multipart/form-data">  
+        {% csrf_token %}  
+        {{ form.as_p }}  
+        <button type="submit">Submit</button>  
+    </form>  
+
+    {% if form.errors %}  
+        <div class="error">  
+            <p>Please correct the errors below:</p>  
+            <ul>  
+                {% for field in form %}  
+                    {% for error in field.errors %}  
+                        <li>{{ error }}</li>  
+                    {% endfor %}  
+                {% endfor %}  
+                {% for error in form.non_field_errors %}  
+                    <li>{{ error }}</li>  
+                {% endfor %}  
+            </ul>  
+        </div>  
+    {% endif %}
+    <h2>Uploaded Drill Data</h2>  
+    <table>  
+        <thead>  
+            <tr>  
+                <th>Title</th>  
+                <th>Description</th>  
+                <th>Picture</th>  
+                <th>Video</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            {% for drill in drill_list %}  
+                <tr>  
+                    <td>{{ drill.title }}</td>  
+                   
+                    <td>{{ drill.desc }}</td>  
+                    <td>  
+                        {% if drill.pic %}  
+                            <img src="{{ drill.pic.url }}" alt="{{ drill.title }}" style="max-width: 100px;">  
+                        {% endif %}  
+                    </td>  
+                    <td>  
+                        {% if drill.video %}  
+                        <video width="320" height="240" controls>  
+                            <source src="{{ drill.video.url }}" type="video/mp4">  
+                            Your browser does not support the video tag.  
+                        </video>  
+                    {% else %}  
+                        No video uploaded.  
+                    {% endif %}  
+                    </td>  
+                </tr>  
+            {% endfor %}  
+        </tbody>  
+    </table>  
+</body>   
+</body>  
+</html>
