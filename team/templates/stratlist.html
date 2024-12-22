@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'team/static1.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy List</title>
+</head>
+<body>
+    <h1>Strategies</h1>
+    <div>
+        {% for strategy in strategies %}
+            <div class="strategy">
+                <h2>{{ strategy.title }}</h2>  <!-- Display the strategy title -->
+                <p>Team: {{ strategy.team.title }}</p>  <!-- Display the team name assuming it has a name attribute -->
+                <p>Positions:
+                    {% for pos in strategy.pos.all %}
+                        {{ pos.position }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <div class="image-gallery">
+                    {% for image in strategy.images.all %}
+                         <div class="image-container">
+                          <img src="{{ image.image.url }}" alt="{{ image.image }}" />
+                        </div>
+                    {% empty %}
+                        <p>No images available.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <p>No strategies found.</p>
+        {% endfor %}
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="{% static 'js/strat.js' %}"></script>
+</body>
+</html>

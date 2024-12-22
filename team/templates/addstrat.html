@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Strategy</title>
+</head>
+<body>
+    <h1>Create Strategy</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <h2>Select Positions:</h2>
+        {% for position in positions %}
+            <div>
+                <input type="checkbox" name="positions" value="{{ position.id }}" id="position_{{ position.id }}">
+                <label for="position_{{ position.id }}">{{ position.position }}</label>
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+        <input type="file" name="images" multiple>
+        <button type="submit">Save Strategy</button>
+    </form>
+
+</body>
+</html>

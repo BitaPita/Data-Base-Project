@@ -1,0 +1,17 @@
+.image-gallery {
+    display: flex;
+    overflow-x: hidden; /* Hide scrollbar, we'll manage it with JS */
+    white-space: nowrap;
+}
+.image-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.image-gallery img {
+    max-width: 300px;
+    max-height: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+}
+

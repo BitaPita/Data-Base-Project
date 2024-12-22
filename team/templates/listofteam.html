@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team List</title>
+</head>
+
+<body>
+    <h1>List of Teams</h1>
+
+        <ul>
+            {% for team in teams_list %}
+                <li>
+                    <h3>{{ team.title }}</h3>  <!-- Assuming 'name' is the attribute for the team's name -->
+                    <p>Details: {{ team.password }}</p>  <!-- Replace 'details' with the actual attribute -->
+                    <p>Established Year: {{ team.desc }}</p>  <!-- Example attribute -->
+                        <img src="{{ team.pic.url }}" alt="{{ team.title }}" style="width: 200px;">
+
+                </li>
+
+
+            {% endfor %}
+        </ul>
+
+</body>
+
+</html>

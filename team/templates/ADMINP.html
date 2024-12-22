@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'team/admin.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="team-list">
+            <h2>Teams list</h2>
+            <div id="team-list">
+                <!-- Sample team items -->
+                <div class="team-item">
+                    <img src="https://via.placeholder.com/50" alt="Logo">
+                    <div class="team-info">
+                        <h3>Team Alpha</h3>
+                        <p class="description">
+                            This is team Alpha.
+                            <span class="show-more" onclick="toggleDescription(this)">Show more</span>
+                        </p>
+                        <p class="full-description" style="display: none;">
+                            This is team Alpha. A well-coordinated and dedicated team working towards common goals. This description is quite long to demonstrate the truncation feature. It should exceed 300 characters to show the "Show more" button functionality. Let's add more text to reach the limit and ensure it demonstrates properly. Almost there, just a bit more to make it complete. Here is the full text displayed.
+                            <span class="show-less" onclick="toggleDescription(this)">Show less</span>
+                        </p>
+                        <small>Team Pass: alpha123</small>
+                    </div>
+                    <button class="edit" onclick="editTeam(0)">Edit</button>
+                    <button class="delete" onclick="deleteTeam(0)">Delete</button>
+                </div>
+                <!-- More teams here -->
+            </div>
+        </div>
+        <div class="team-form">
+            <h2>Team Form</h2>
+            <form id="team-form">
+                <input type="text" id="team-name" placeholder="Team Name" required>
+                <input type="text" id="team-pass" placeholder="Team Pass" required>
+                <input type="text" id="team-description" placeholder="Description" required>
+                <input type="file" id="team-logo" required>
+                <div class="form-buttons">
+                    <button type="submit" id="add-team">Add Team</button>
+                    <button type="button" id="update-team">Update Team</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

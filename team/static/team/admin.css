@@ -1,0 +1,202 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 70%;
+    max-width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #ff8c00;
+}
+h3{
+    text-align: center;
+}
+.team-list, .team-form {
+    width: 50%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.team-list h2, .team-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff4500;
+    font-size: 1.8em;
+}
+
+#team-list {
+    max-height: 70vh;
+    overflow-y: auto;
+    border-right: none; /* Make the border invisible */
+}
+
+.team-item {
+    display: flex;
+    flex-direction: column; /* Ensure content stacks vertically */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden; /* Prevent content overflow */
+    margin-top: 10px;
+}
+
+.team-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-info {
+    flex: 1;
+    margin-left: 0; /* Adjust margin to fit the flex-direction */
+    overflow: hidden;
+}
+
+.team-info h3 {
+    margin: 0; /* Remove margin for proper alignment */
+}
+.team-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.team-info {
+    flex: 1;
+    margin-left: 0; /* Adjust margin to fit the flex-direction */
+    overflow: hidden;
+}
+
+.team-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.team-item button {
+    padding: 5px; /* Adjusted padding to fit within the width */
+    width: 70px; /* Fixed width for smaller buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em; /* Smaller font size */
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.team-item button.edit {
+    background-color: #ffa500;
+    color: #fff;
+}
+
+.team-item button.edit:hover {
+    background-color: #ff8c00;
+    transform: translateY(-2px);
+}
+
+.team-item button.delete {
+    background-color: #ff4500;
+    color: #fff;
+    margin-top: 2px;
+}
+
+.team-item button.delete:hover {
+    background-color: #e03d00;
+    transform: translateY(-2px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+input, button {
+    margin: 12px 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:hover, button:hover {
+    border-color: #ff8c00;
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+button {
+    background-color: #ffa500;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #ff8c00;
+    transform: translateY(-2px);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.description, .full-description {
+    margin: 0;
+    text-align: left;
+    white-space: normal; /* Ensure text wraps correctly */
+}
+
+.full-description {
+    display: none;
+}
+
+.show-more, .show-less {
+    color: #ff4500;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+/* Existing styles for team-item buttons remain unchanged */
+#add-team, #update-team {
+    background-color: #ffa500; /* Same initial background color */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#add-team:hover, #update-team:hover {
+    background-color: #ff8c00; /* Change on hover similar to edit button */
+    transform: translateY(-2px); /* Elevate the button slightly on hover */
+}

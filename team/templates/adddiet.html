@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <h1>Add a New diet</h1>
+             {% csrf_token %}
+<form action="{% url 'team:diet' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="day">Select Day:</label>
+                <select class="form-control" id="day" name="day" required>
+                    <option value="S">Saturday</option>
+                    <option value="SU">Sunday</option>
+                    <option value="M">Monday</option>
+                    <option value="T">Tuesday</option>
+                    <option value="W">Wednesday</option>
+                    <option value="TH">Thursday</option>
+                    <option value="F">Friday</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="meal">Select Meal:</label>
+                <select class="form-control" id="meal" name="meal" required>
+                    <option value="D">Dinner</option>
+                    <option value="B">Breakfast</option>
+                    <option value="L">Lunch</option>
+                    <option value="BG">Pre Game</option>
+                    <option value="AG">Post Game</option>
+                    <option value="S">Snack</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" maxlength="50" required>
+            </div>
+            <div class="form-group">
+                <label for="desc">Description:</label>
+                <textarea class="form-control" id="desc" name="desc" maxlength="500"></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
