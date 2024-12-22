@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/style3.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile</title>
+    <link rel="stylesheet" href="style3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+{% load static %}
+     <div class="profile-card">
+        <div class="header">
+            <div class="player-image">
+                {% if player.pic %}
+                <img img id="profileImage" src="{{player.pic.url}}" alt="no no no no no no okgpejregoih" />
+                {% else %}
+                <img img id="profileImage" src="{% static 'img/icon.jfif' %}" alt="Default Profile Picture"/>
+                {% endif %}
+            </div>
+        </div>
+        <div class="info">
+            <div class="row">
+                <div class="label">نام</div>
+                <div class="value" id="firstName">{{ player.first_name }}</div>
+            </div>
+            <div class="row">
+                <div class="label">نام خانوادگی</div>
+                <div class="value" id="lastName">{{ player.last_name }}</div>
+            </div>
+            <div class="row">
+                <div class="label">شماره بازیکن</div>
+                <div class="value" id="playerNumber">{{ player.number }}</div>
+            </div>
+            <div class="row">
+                <div class="label">سن</div>
+                <div class="value" id="age">{{ player.age }}</div>
+            </div>
+            <div class="row">
+                <div class="label">موقعیت</div>
+                <div class="value" id="position">{{ player.pos }}</div>
+            </div>
+        </div>
+        <button class="edit-button" onclick="openModal()">تغییر اطلاعات</button>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="overlay"></div>
+    <div id="editModal">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <label for="{{ form.first_name.id_for_label }}">نام</label>
+                <input type="text" name="first_name" id="{{ form.first_name.id_for_label }}" value="{{ form.first_name.value }}">
+            </div>
+            <div class="row">
+                <label for="{{ form.last_name.id_for_label }}">نام خانوادگی</label>
+                <input type="text" name="last_name" id="{{ form.last_name.id_for_label }}" value="{{ form.last_name.value }}">
+            </div>
+            <div class="row">
+                <label  for="{{ form.number.id_for_label }}">شماره بازیکن</label>
+                <input type="number" name="number" id="{{ form.number.id_for_label }}" value="{{ form.number.value }}">
+            </div>
+            <div class="row">
+                <label for="{{ form.age.id_for_label }}">سن</label>
+                <input type="number"  name="age" id="{{ form.age.id_for_label }}" value="{{ form.age.value }}">
+            </div>
+            <div class="row">
+                <label for="{{ form.pos.id_for_label }}">موقعیت:</label>
+                <select  name="pos" id="{{ form.pos.id_for_label }}">
+                        {% for choice in form.pos.field.choices %}
+                    <option value="{{ choice.0 }}" {% if choice.0 == form.pos.value %}selected{% endif %}>
+                        {{ choice.1 }}
+                    </option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="row">
+                <label for="{{ form.pic.id_for_label }}">تصویر پروفایل</label>
+                <input type="file" id="{{ form.pic.id_for_label }}" name="pic" value="{{ form.pic.value }}">
+            </div>
+            <button type="submit" class="save-button">ذخیره</button>
+            <button type="button" class="cancel-button" onclick="closeModal()">لغو</button>
+        </form>
+    </div>
+
+    <script>
+        function uploadImage(event) {
+            const image = document.getElementById('profileImage');
+            const file = event.target.files[0];
+            if (file) {
+                image.src = URL.createObjectURL(file);
+            }
+        }
+
+        const editModal = document.getElementById('editModal');
+        const overlay = document.getElementById('overlay');
+
+        document.querySelector('.edit-button').addEventListener('click', function() {
+            editModal.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        function closeModal() {
+            editModal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
