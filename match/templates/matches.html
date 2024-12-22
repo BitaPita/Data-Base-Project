@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matches</title>
+</head>
+<body>
+    <h2>Matches</h2>
+    <ul>
+        {% for match in matches %}
+            <li>
+                {{ match.0 }}  {{ match.4 }} :{{ match.5 }}  {{ match.1 }} at {{ match.2 }} on {{ match.3 }}
+                <a href="{% url 'match:analysis' match.6 %}"> analysis</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>upcoming</h2>
+    <ul>
+        {% for u in upc %}
+            <li>
+                {{ u.0 }} vs {{ u.1 }} at {{ u.2 }} on {{ u.3 }}
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

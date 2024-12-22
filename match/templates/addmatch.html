@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Sign Up</title>
+</head>
+<body>
+    <h1>add match</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <select class="lb" name="team2" id="teams">
+                <option value="notavail">not available</option>
+                {% for x in teams %}
+                <option value={{x.id}}>{{x.title}}</option>
+                {% endfor%}
+         </select>
+        <input type="text" placeholder="if team name not available"  name="tname" >
+        <input type="number" placeholder="team1 score"  name="sc1" >
+        <input type="number" placeholder="team2 score"  name="sc2" >
+        <button type="submit">Save</button>
+    </form>
+
+</body>
+</html>
